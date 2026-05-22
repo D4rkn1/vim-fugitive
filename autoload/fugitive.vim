@@ -6281,7 +6281,7 @@ function! fugitive#Open(cmd, bang, mods, arg, ...) abort
     return 'echoerr ' . string(v:exception)
   endtry
   let mods = s:Mods(a:mods)
-  if a:cmd ==# 'edit'
+  if a:cmd ==# 'edit' && !get(g:, 'fugitive_no_blur', 0)
     call s:BlurStatus()
   endif
   return mods . a:cmd . pre . ' ' . s:fnameescape(file)
